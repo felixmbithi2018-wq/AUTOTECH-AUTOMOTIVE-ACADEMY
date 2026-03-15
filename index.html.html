@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTech Academy | Automotive Training Platform</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #ffd966;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-login:hover {
+            background: white;
+            color: #1e3c72;
+        }
+
+        .btn-signup {
+            background: #ffaa00;
+            color: #1e3c72;
+        }
+
+        .btn-signup:hover {
+            background: #ffc34d;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1.1rem;
+        }
+
+        .search-bar button {
+            padding: 1rem 2rem;
+            background: #ffaa00;
+            border: none;
+            border-radius: 0 50px 50px 0;
+            color: #1e3c72;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* User Role Cards */
+        .role-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .role-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .role-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .role-card i {
+            font-size: 3rem;
+            color: #ffaa00;
+            margin-bottom: 1rem;
+        }
+
+        .role-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+
+        .role-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: #e9f0fa;
+            color: #1e3c72;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Course Categories */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            border: 1px solid #e0e7ef;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            border-color: #ffaa00;
+        }
+
+        .course-header {
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .course-header.diesel { background: #2c3e50; }
+        .course-header.petrol { background: #c44536; }
+        .course-header.hybrid { background: #27ae60; }
+        .course-header.electric { background: #3498db; }
+        .course-header.transmission { background: #8e44ad; }
+        .course-header.braking { background: #e67e22; }
+        .course-header.suspension { background: #16a085; }
+        .course-header.body-paint { background: #d35400; }
+
+        .course-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .course-body {
+            padding: 1.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .course-meta i {
+            margin-right: 0.3rem;
+            color: #ffaa00;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e7ef;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #ffaa00;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .btn-course {
+            width: 100%;
+            padding: 0.8rem;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-course:hover {
+            background: #2a5298;
+        }
+
+        /* Learning Resources Section */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .resource-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .resource-item i {
+            font-size: 2.5rem;
+            color: #ffaa00;
+            margin-bottom: 1rem;
+        }
+
+        .resource-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+
+        .resource-count {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.3rem 1rem;
+            background: #e9f0fa;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Certificate Section */
+        .certificate-section {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            text-align: left;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .certificate-preview {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            color: #333;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 5px solid #ffd966;
+        }
+
+        .certificate-preview h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .certificate-preview .seal {
+            font-size: 4rem;
+            color: #ffaa00;
+            margin: 1rem 0;
+        }
+
+        .certificate-features {
+            list-style: none;
+        }
+
+        .certificate-features li {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .certificate-features i {
+            color: #ffaa00;
+            font-size: 1.3rem;
+        }
+
+        .btn-certificate {
+            background: #ffaa00;
+            color: #1e3c72;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: #e9f0fa;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card .name {
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .testimonial-card .role {
+            color: #ffaa00;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .rating {
+            color: #ffaa00;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a2634;
+            color: white;
+            padding: 4rem 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-col h4 {
+            color: #ffaa00;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: #b0c4de;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #ffaa00;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #2a3a4f;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #ffaa00;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #2a3a4f;
+            color: #b0c4de;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-car"></i>
+                <span>AutoTech Academy</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#certification">Certification</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-login">Log In</a>
+                <a href="#" class="btn btn-signup">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Master Automotive Technology</h1>
+        <p>From diesel engines to electric vehicles, from panel beating to diagnostics — comprehensive training for technicians, trainers, trainees, and enthusiasts</p>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for courses, topics, or skills...">
+            <button><i class="fas fa-search"></i> Search</button>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- User Role Section -->
+        <section class="role-section">
+            <div class="section-title">
+                <h2>Learn Your Way</h2>
+                <p>Tailored experiences for every type of automotive professional</p>
+            </div>
+            <div class="role-cards">
+                <div class="role-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Technicians</h3>
+                    <p>Advanced diagnostics, repair procedures, and real-world case studies</p>
+                    <span class="role-badge">470+ practical guides</span>
+                </div>
+                <div class="role-card">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Trainees</h3>
+                    <p>Structured learning paths from beginner to professional</p>
+                    <span class="role-badge">32 foundational courses</span>
+                </div>
+                <div class="role-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Trainers</h3>
+                    <p>Create courses, track student progress, and manage cohorts</p>
+                    <span class="role-badge">Admin tools & analytics</span>
+                </div>
+                <div class="role-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Enthusiasts</h3>
+                    <p>Deepen your understanding of how cars work</p>
+                    <span class="role-badge">Community & basics</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Categories -->
+        <section class="role-section" id="courses">
+            <div class="section-title">
+                <h2>Automotive Course Library</h2>
+                <p>Comprehensive training across all vehicle systems</p>
+            </div>
+            <div class="course-grid">
+                <!-- Diesel Engines -->
+                <div class="course-card">
+                    <div class="course-header diesel">
+                        <h3>Diesel Engines</h3>
+                        <div class="course-stats">
+                            <span><i class="far fa-file-alt"></i> 24 notes</span>
+                            <span><i class="fas fa-video"></i> 18 videos</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> 42 hours</span>
+                            <span><i class="fas fa-signal"></i> Advanced</span>
+                        </div>
+                        <p>Common rail, injectors, turbocharging, engine management, and diagnostics</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <button class="btn-course">Start Learning</button>
+                    </div>
+                </div>
+
+                <!-- Petrol Engines -->
+                <div class="course-card">
+                    <div class="course-header petrol">
+                        <h3>Petrol Engines</h3>
+                        <div class="course-stats">
+                            <span><i class="far fa-file-alt"></i> 22 notes</span>
+                            <span><i class="fas fa-video"></i> 16 videos</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> 38 hours</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
+                        <p>Ignition systems, fuel injection, variable valve timing, engine rebuilding</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <button class="btn-course">Start Learning</button>
+                    </div>
+                </div>
+
+                <!-- Hybrid & Electric -->
+                <div class="course-card">
+                    <div class="course-header hybrid">
+                        <h3>Hybrid & Electric</h3>
+                        <div class="course-stats">
+                            <span><i class="far fa-file-alt"></i> 28 notes</span>
+                            <span><i class="fas fa-video"></i> 22 videos</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> 45 hours</span>
+                            <span><i class="fas fa-signal"></i> Advanced</span>
+                        </div>
+                        <p>Battery systems, electric motors, regenerative braking, high-voltage safety</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <button class="btn-course">Start Learning</button>
+                    </div>
+                </div>
+
+                <!-- Transmission -->
+                <div class="course-card">
+                    <div class="course-header transmission">
+                        <h3>Transmission</h3>
+                        <div class="course-stats">
+                            <span><i class="far fa-file-alt"></i> 19 notes</span>
+                            <span><i class="fas fa-video"></i> 14 videos</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> 32 hours</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
+                        <p>Manual, automatic, CVT, dual-clutch, differentials, transfer cases</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <button class="btn-course">Start Learning</button>
+                    </div>
+                </div>
+
+                <!-- Braking Systems -->
+                <div class="course-card">
+                    <div class="course-header braking">
+                        <h3>Braking Systems</h3>
+                        <div class="course-stats">
+                            <span><i class="far fa-file-alt"></i> 16 notes</span>
+                            <span><i class="fas fa-video"></i> 12 videos</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> 28 hours</span>
+                            <span><i class="fas fa-signal"></i> All levels</span>
+                        </div>
+                        <p>Hydraulic systems, ABS, electronic brake distribution, regenerative braking</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <button class="btn-course">Start Learning</button>
+                    </div>
+                </div>
+
+                <!-- Fuel & Charging -->
+                <div class="course-card">
+                    <div class="course-header electric">
+                        <h3>Fuel & Charging</h3>
+                        <div class="course-stats">
+                            <span><i class="far fa-file-alt"></i> 15 notes</span>
+                            <span><i class="fas fa-video"></i> 11 videos</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> 25 hours</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
+                        <p>Fuel pumps, injectors, charging systems, alternators, battery management</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <button class="btn-course">Start Learning</button>
+                    </div>
+                </div>
+
+                <!-- Starting & Ignition -->
+                <div class="course-card">
+                    <div class="course-header petrol">
+                        <h3>Starting & Ignition</h3>
+                        <div class="course-stats">
+                            <span><i class="far fa-file-alt"></i> 12 notes</span>
+                            <span><i class="fas fa-video"></i> 10 videos</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> 20 hours</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                        </div>
+                        <p>Starters, ignition coils, spark plugs, timing, cranking systems</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <button class="btn-course">Start Learning</button>
+                    </div>
+                </div>
+
+                <!-- Suspension & Steering -->
+                <div class="course-card">
+                    <div class="course-header suspension">
+                        <h3>Suspension & Steering</h3>
+                        <div class="course-stats">
+                            <span><i class="far fa-file-alt"></i> 18 notes</span>
+                            <span><i class="fas fa-video"></i> 15 videos</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> 30 hours</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
+                        <p>Shock absorbers, struts, control arms, power steering, alignment</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <button class="btn-course">Start Learning</button>
+                    </div>
+                </div>
+
+                <!-- Wheels & Tires -->
+                <div class="course-card">
+                    <div class="course-header braking">
+                        <h3>Wheels & Tires</h3>
+                        <div class="course-stats">
+                            <span><i class="far fa-file-alt"></i> 10 notes</span>
+                            <span><i class="fas fa-video"></i> 8 videos</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> 18 hours</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                        </div>
+                        <p>Tire construction, wear patterns, balancing, pressure monitoring systems</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <button class="btn-course">Start Learning</button>
+                    </div>
+                </div>
+
+                <!-- Safety & Comfort -->
+                <div class="course-card">
+                    <div class="course-header electric">
+                        <h3>Safety & Comfort</h3>
+                        <div class="course-stats">
+                            <span><i class="far fa-file-alt"></i> 21 notes</span>
+                            <span><i class="fas fa-video"></i> 17 videos</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> 35 hours</span>
+                            <span><i class="fas fa-signal"></i> Advanced</span>
+                        </div>
+                        <p>Airbags, ABS, climate control, ADAS, parking sensors, infotainment</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <button class="btn-course">Start Learning</button>
+                    </div>
+                </div>
+
+                <!-- Panel Beating & Spray Painting -->
+                <div class="course-card">
+                    <div class="course-header body-paint">
+                        <h3>Panel Beating & Paint</h3>
+                        <div class="course-stats">
+                            <span><i class="far fa-file-alt"></i> 14 notes</span>
+                            <span><i class="fas fa-video"></i> 12 videos</span>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> 40 hours</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
+                        <p>Dent repair, metal finishing, surface preparation, painting techniques</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <button class="btn-course">Start Learning</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="role-section" id="resources">
+            <div class="section-title">
+                <h2>Learning Resources</h2>
+                <p>Multiple formats to suit your learning style</p>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <h4>Technical Notes</h4>
+                    <p>Comprehensive written guides, diagrams, and schematics</p>
+                    <span class="resource-count">342 documents</span>
+                </div>
+                <div class="resource-item">
+                    <i class="fas fa-video"></i>
+                    <h4>Video Library</h4>
+                    <p>Step-by-step demonstrations and theory explanations</p>
+                    <span class="resource-count">287 videos</span>
+                </div>
+                <div class="resource-item">
+                    <i class="fas fa-image"></i>
+                    <h4>Image Galleries</h4>
+                    <p>High-resolution component photos and exploded views</p>
+                    <span class="resource-count">1,200+ images</span>
+                </div>
+                <div class="resource-item">
+                    <i class="fas fa-question-circle"></i>
+                    <h4>Knowledge Checks</h4>
+                    <p>Quizzes and tests to validate your understanding</p>
+                    <span class="resource-count">156 assessments</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificate Section -->
+        <section class="certificate-section" id="certification">
+            <div class="certificate-grid">
+                <div>
+                    <h2 style="color: white; font-size: 2.5rem;">Get Certified</h2>
+                    <p style="font-size: 1.2rem; margin: 1.5rem 0;">Complete courses and earn industry-recognized certificates</p>
+                    <ul class="certificate-features">
+                        <li><i class="fas fa-check-circle"></i> Automatically generated upon completion</li>
+                        <li><i class="fas fa-check-circle"></i> Verified and shareable</li>
+                        <li><i class="fas fa-check-circle"></i> Multiple specializations: Diesel, Petrol, Hybrid/EV</li>
+                        <li><i class="fas fa-check-circle"></i> QR code for instant verification</li>
+                    </ul>
+                    <button class="btn btn-certificate">View My Certificates</button>
+                </div>
+                <div class="certificate-preview">
+                    <i class="fas fa-award" style="font-size: 3rem; color: #ffaa00;"></i>
+                    <h3>CERTIFICATE OF COMPLETION</h3>
+                    <p style="font-size: 1.5rem; font-weight: bold; color: #1e3c72;">John Smith</p>
+                    <p>has successfully completed</p>
+                    <p style="font-size: 1.3rem; font-weight: 600;">Advanced Hybrid & Electric Vehicle Systems</p>
+                    <div class="seal">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <p>Issued: March 15, 2026</p>
+                    <p style="font-size: 0.8rem;">Certificate ID: AT-HEV-2026-1842</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials" id="community">
+            <div class="section-title">
+                <h2>Trusted by Automotive Professionals</h2>
+                <p>Join thousands of technicians, trainers, and enthusiasts</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Technician">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The diesel engine diagnostics course helped me fix a common rail issue that I'd been struggling with for months. The video quality is excellent."</p>
+                    <p class="name">Michael Okafor</p>
+                    <p class="role">Senior Technician, Lagos</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Trainer">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"I use AutoTech Academy to supplement my in-person training. The structured curriculum and progress tracking for my trainees is invaluable."</p>
+                    <p class="name">Sarah Chen</p>
+                    <p class="role">Automotive Instructor, Singapore</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Enthusiast">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"As a car enthusiast, I finally understand how modern hybrid systems work. The animations make complex concepts easy to grasp."</p>
+                    <p class="name">David Kim</p>
+                    <p class="role">Enthusiast, USA</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>AutoTech Academy</h4>
+                <p>Empowering automotive professionals and enthusiasts with world-class technical training.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Courses</h4>
+                <ul>
+                    <li><a href="#">Diesel Engines</a></li>
+                    <li><a href="#">Petrol Engines</a></li>
+                    <li><a href="#">Hybrid & Electric</a></li>
+                    <li><a href="#">Transmission</a></li>
+                    <li><a href="#">Braking Systems</a></li>
+                    <li><a href="#">Body & Paint</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>For Technicians</h4>
+                <ul>
+                    <li><a href="#">Diagnostic Library</a></li>
+                    <li><a href="#">Technical Service Bulletins</a></li>
+                    <li><a href="#">Community Forum</a></li>
+                    <li><a href="#">Career Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>For Trainers</h4>
+                <ul>
+                    <li><a href="#">Course Builder</a></li>
+                    <li><a href="#">Student Management</a></li>
+                    <li><a href="#">Analytics Dashboard</a></li>
+                    <li><a href="#">Custom Assessments</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Technical Support</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 AutoTech Academy. All rights reserved. Empowering the next generation of automotive professionals.</p>
+        </div>
+    </footer>
+</body>
+</html>
